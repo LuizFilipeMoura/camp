@@ -1,0 +1,60 @@
+$sqrt2: 1.4142135623730951;
+
+$default-size: 10px;
+
+@mixin set-transform($x, $y, $rotate) {
+  transform: translateX($x) translateY($y) rotate($rotate);
+}
+
+.card {
+  position: relative;
+
+  &:after {
+    content: "";
+    width: calc(var(--arrow-size, #{$default-size}) * 2 / #{$sqrt2});
+    height: calc(var(--arrow-size, #{$default-size}) * 2 / #{$sqrt2});
+    background-color: inherit;
+    display: block;
+    position: absolute;
+    border: inherit;
+    box-sizing: inherit;
+    box-shadow: inherit;
+    clip-path: polygon(100% 0.5px, 0.5px 100%, 0 100%, 0 0, 100% 0);
+  }
+
+  &[data-arrow="top"] {
+    margin-top: var(--arrow-size, $default-size);
+    &:after {
+      top: 0;
+      left: 50%;
+      @include set-transform(-50%, -50%, 45deg);
+    }
+  }
+
+  &[data-arrow="bottom"] {
+    margin-bottom: var(--arrow-size, $default-size);
+    &:after {
+      bottom: 0;
+      left: 50%;
+      @include set-transform(-50%, 50%, 225deg);
+    }
+  }
+
+  &[data-arrow="left"] {
+    margin-left: var(--arrow-size, $default-size);
+    &:after {
+      left: 0;
+      top: 50%;
+      @include set-transform(-50%, -50%, 315deg);
+    }
+  }
+
+  &[data-arrow="right"] {
+    margin-right: var(--arrow-size, $default-size);
+    &:after {
+      right: 0;
+      top: 50%;
+      @include set-transform(50%, -50%, 135deg);
+    }
+  }
+}

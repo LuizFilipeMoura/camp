@@ -1,0 +1,19 @@
+$cdnUrl: "https://cgcdn.s3.amazonaws.com/global-ui/fonts/";
+
+@font-face {
+  font-family: "cgIconsLine";
+  src: url($cdnUrl + "cgiconsline.ttf");
+}
+
+@font-face {
+  font-family: "cgIconsSolid";
+  src: url($cdnUrl + "cgiconssolid.ttf");
+}
+
+.fontCgIconsLine {
+  font-family: "cgIconsLine";
+}
+
+.fontCgIconsSolid {
+  font-family: "cgIconsSolid";
+}

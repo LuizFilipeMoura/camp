@@ -1,0 +1,322 @@
+$fonts: (
+  gotham: "Gotham",
+  united: "United",
+);
+
+$text-weights: (
+  book: 300,
+  normal: 400,
+  bold: 700,
+);
+
+$text-sizes: (
+  xlarge: 24px,
+  large: 18px,
+  default: 16px,
+  small: 14px,
+  xsmall: 12px,
+  tiny: 10px,
+);
+
+$text-line-heights: (
+  xlarge: 32px,
+  large: 24px,
+  default: 22px,
+  small: 18px,
+  xsmall: 16px,
+  tiny: 14px,
+);
+
+$text-letter-spacings--book: (
+  xlarge: -0.5px,
+  large: -0.4px,
+  default: -0.3px,
+  small: -0.2px,
+  xsmall: -0.2px,
+  tiny: -0.2px,
+);
+
+$text-letter-spacings--normal: (
+  xlarge: -0.4px,
+  large: -0.3px,
+  default: -0.2px,
+  small: -0.2px,
+  xsmall: -0.1px,
+  tiny: -0.1px,
+);
+
+$text-letter-spacings--bold: (
+  xlarge: -0.4px,
+  large: -0.3px,
+  default: -0.2px,
+  small: -0.2px,
+  xsmall: -0.1px,
+  tiny: -0.1px,
+);
+
+$heading-default-sizes--desktop: (
+  h1: 48px,
+  h2: 40px,
+  h3: 32px,
+  h4: 24px,
+  h5: 18px,
+  h6: 16px,
+);
+
+$heading-default-sizes--tablet: (
+  h1: 40px,
+  h2: 32px,
+  h3: 24px,
+  h4: 18px,
+  h5: 16px,
+  h6: 14px,
+);
+
+$heading-default-sizes--mobile: (
+  h1: 32px,
+  h2: 24px,
+  h3: 18px,
+  h4: 16px,
+  h5: 14px,
+  h6: 12px,
+);
+
+$heading-default-letter-spacings--desktop: (
+  h1: -1.7px,
+  h2: -0.8px,
+  h3: -0.6px,
+  h4: -0.4px,
+  h5: -0.2px,
+  h6: -0.2px,
+);
+
+$heading-default-letter-spacings--tablet: (
+  h1: -0.8px,
+  h2: -0.6px,
+  h3: -0.4px,
+  h4: -0.2px,
+  h5: -0.2px,
+  h6: -0.2px,
+);
+
+$heading-default-letter-spacings--mobile: (
+  h1: -0.6px,
+  h2: -0.4px,
+  h3: -0.2px,
+  h4: -0.2px,
+  h5: -0.2px,
+  h6: -0.1px,
+);
+
+$heading-default-line-heights--desktop: (
+  h1: 56px,
+  h2: 48px,
+  h3: 40px,
+  h4: 32px,
+  h5: 24px,
+  h6: 22px,
+);
+
+$heading-default-line-heights--tablet: (
+  h1: 48px,
+  h2: 40px,
+  h3: 32px,
+  h4: 24px,
+  h5: 22px,
+  h6: 18px,
+);
+
+$heading-default-line-heights--mobile: (
+  h1: 40px,
+  h2: 32px,
+  h3: 24px,
+  h4: 22px,
+  h5: 18px,
+  h6: 16px,
+);
+
+$display-gotham-sizes--desktop: (
+  h1: 48px,
+  h2: 40px,
+  h3: 32px,
+  h4: 24px,
+  h5: 18px,
+  h6: 16px,
+);
+
+$display-united-sizes--desktop: (
+  h1: 84px,
+  h2: 60px,
+  h3: 48px,
+  h4: 40px,
+  h5: 32px,
+  h6: 20px,
+);
+
+$display-gotham-sizes--tablet: (
+  h1: 40px,
+  h2: 32px,
+  h3: 24px,
+  h4: 18px,
+  h5: 16px,
+  h6: 14px,
+);
+
+$display-united-sizes--tablet: (
+  h1: 84px,
+  h2: 60px,
+  h3: 48px,
+  h4: 40px,
+  h5: 32px,
+  h6: 20px,
+);
+
+$display-gotham-sizes--mobile: (
+  h1: 32px,
+  h2: 24px,
+  h3: 18px,
+  h4: 16px,
+  h5: 14px,
+  h6: 10px,
+);
+
+$display-united-sizes--mobile: (
+  h1: 32px,
+  h2: 24px,
+  h3: 22px,
+  h4: 18px,
+  h5: 16px,
+  h6: 14px,
+);
+
+$display-gotham-letter-spacings--desktop: (
+  h1: 6.5px,
+  h2: 6px,
+  h3: 5px,
+  h4: 4px,
+  h5: 3.4px,
+  h6: 7px,
+);
+
+$display-united-letter-spacings--desktop: (
+  h1: 2px,
+  h2: 2px,
+  h3: 1px,
+  h4: 0.5px,
+  h5: 0.5px,
+  h6: 0px,
+);
+
+$display-gotham-letter-spacings--tablet: (
+  h1: 6px,
+  h2: 5px,
+  h3: 4px,
+  h4: 3.4px,
+  h5: 3px,
+  h6: 7px,
+);
+
+$display-united-letter-spacings--tablet: (
+  h1: 2px,
+  h2: 2px,
+  h3: 1px,
+  h4: 0.5px,
+  h5: 0.5px,
+  h6: 0px,
+);
+
+$display-gotham-letter-spacings--mobile: (
+  h1: 5px,
+  h2: 4px,
+  h3: 3.4px,
+  h4: 3px,
+  h5: 2.8px,
+  h6: 7px,
+);
+
+$display-united-letter-spacings--mobile: (
+  h1: 0.5px,
+  h2: 0,
+  h3: 0,
+  h4: 0,
+  h5: 0,
+  h6: 0,
+);
+
+$display-gotham-line-heights--desktop: (
+  h1: 56px,
+  h2: 48px,
+  h3: 40px,
+  h4: 32px,
+  h5: 24px,
+  h6: 22px,
+);
+
+$display-gotham-line-heights--tablet: (
+  h1: 48px,
+  h2: 40px,
+  h3: 32px,
+  h4: 24px,
+  h5: 22px,
+  h6: 18px,
+);
+
+$display-gotham-line-heights--mobile: (
+  h1: 40px,
+  h2: 32px,
+  h3: 24px,
+  h4: 22px,
+  h5: 18px,
+  h6: 14px,
+);
+
+$display-united-line-heights--desktop: (
+  h1: 84px,
+  h2: 60px,
+  h3: 48px,
+  h4: 40px,
+  h5: 32px,
+  h6: 20px,
+);
+
+$display-united-line-heights--tablet: (
+  h1: 84px,
+  h2: 60px,
+  h3: 48px,
+  h4: 40px,
+  h5: 32px,
+  h6: 20px,
+);
+
+$display-united-line-heights--mobile: (
+  h1: 32px,
+  h2: 24px,
+  h3: 22px,
+  h4: 18px,
+  h5: 16px,
+  h6: 14px,
+);
+
+$label-sizes: (
+  xlarge: 16px,
+  large: 14px,
+  default: 12px,
+  small: 10px,
+  xsmall: 9px,
+);
+
+$label-line-heights: (
+  xlarge: 24px,
+  large: 18px,
+  default: 16px,
+  small: 14px,
+  xsmall: 14px,
+);
+
+$label-letter-spacings: (
+  xlarge: 1.5px,
+  large: 1.5px,
+  default: 1.5px,
+  small: 1.5px,
+  xsmall: 1px,
+);

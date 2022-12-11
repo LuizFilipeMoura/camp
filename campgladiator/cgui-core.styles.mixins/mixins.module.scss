@@ -1,0 +1,37 @@
+@import "./campgladiator/cgui-core.styles.variables.colors/colors.module.scss";
+
+@mixin add-background-image($path, $img) {
+  background-image: url($path + $img);
+}
+
+@mixin shimmer-effect(
+  $shimmerBackgroundWidth,
+  $shimmerVelocity,
+  $firstColor: $lighter-gray,
+  $secondColor: $light-gray
+) {
+  animation: shimmer $shimmerVelocity infinite;
+  background: linear-gradient(
+    to right,
+    $firstColor 6%,
+    $secondColor 23%,
+    $firstColor 40%
+  );
+  background-size: $shimmerBackgroundWidth 100%;
+
+  @keyframes shimmer {
+    0% {
+      background-position: -$shimmerBackgroundWidth 0;
+    }
+    50% {
+      background-position: 0 0;
+    }
+    100% {
+      background-position: $shimmerBackgroundWidth 0;
+    }
+  }
+}
+
+@mixin transition-default($targetAttribute) {
+  transition: $targetAttribute, 0.3s ease;
+}

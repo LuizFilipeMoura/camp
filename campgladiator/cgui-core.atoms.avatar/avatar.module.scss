@@ -1,0 +1,11 @@
+@import "./campgladiator/cgui-core.styles.variables.colors/colors.module.scss";
+
+.avatar {
+  max-width: 144px;
+  max-height: 144px;
+  border-radius: 144px;
+  border: 2px solid $light-gray;
+  box-sizing: border-box;
+  object-fit: cover;
+  object-position: center center;
+}

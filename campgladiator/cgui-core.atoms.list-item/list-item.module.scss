@@ -1,0 +1,114 @@
+@import "./campgladiator/cgui-core.styles.variables.colors/colors.module.scss";
+
+.item {
+  display: flex;
+  border-radius: 100px;
+  color: $medium-gray;
+  justify-content: flex-start;
+  align-items: center;
+  cursor: pointer;
+
+  &[data-size="default"] {
+    height: 40px;
+
+    .icon {
+      margin-left: 20px;
+      font-size: 18px;
+    }
+
+    .p {
+      &.extraLeftMargin {
+        margin-left: 20px;
+      }
+
+      &.extraRightMargin {
+        margin-right: 20px;
+      }
+    }
+
+    .tag {
+      margin-right: 10px;
+    }
+
+    .badge {
+      margin-right: 10px;
+    }
+
+    .avatar {
+      margin-left: 8px;
+    }
+  }
+
+  &[data-size="small"] {
+    height: 30px;
+
+    .icon {
+      margin-left: 15px;
+      font-size: 16px;
+    }
+
+    .p {
+      &.extraLeftMargin {
+        margin-left: 15px;
+      }
+
+      &.extraRightMargin {
+        margin-right: 15px;
+      }
+    }
+
+    .tag {
+      margin-right: 5px;
+    }
+
+    .badge {
+      margin-right: 5px;
+    }
+
+    .avatar {
+      margin-left: 3px;
+    }
+  }
+
+  &:hover {
+    background-color: $lighter-gray;
+  }
+
+  &.active {
+    background-color: $gladiator;
+    color: $white;
+
+    .badge {
+      background-color: $white;
+      color: $gladiator;
+    }
+  }
+
+  &.disablePointer {
+    pointer-events: none;
+    text-align: center;
+  }
+
+  .avatar {
+    margin-left: 8px;
+    margin-right: 5px;
+  }
+
+  .icon {
+    margin-right: 5px;
+  }
+
+  .tag {
+    margin-left: 5px;
+  }
+
+  .badge {
+    margin-left: 5px;
+  }
+
+  .p {
+    width: 100%;
+    white-space: nowrap;
+    flex: 1;
+  }
+}

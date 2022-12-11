@@ -1,0 +1,189 @@
+@import "./campgladiator/cgui-core.styles.variables.colors/colors.module.scss";
+@import "./campgladiator/cgui-core.styles.variables.typography/typography.module.scss";
+
+@mixin set-box-shadow($color) {
+  box-shadow: 0 0 0 3px rgba($color, 0.2);
+}
+
+.content {
+  position: relative;
+  width: 370px;
+
+  .outsideWrapper {
+    padding: 0 9px 0 4px;
+    display: flex;
+    position: relative;
+    overflow: hidden;
+    background-color: $white;
+    border: 1px solid $text-gray;
+    transition: border-color ease 0.2s;
+    box-sizing: border-box;
+    border-radius: 20px;
+    min-height: 40px;
+    width: 100%;
+
+    &.extended {
+      max-height: 250px;
+    }
+
+    .innerWrapper {
+      padding: 4px 5px 4px 0;
+      overflow: auto;
+      display: flex;
+      align-items: center;
+      flex: 1 1 0%;
+      flex-wrap: wrap;
+      box-sizing: border-box;
+      gap: 5px;
+      @-moz-document url-prefix() {
+        scrollbar-color: $text-gray $lighter-gray;
+      }
+
+      &.noRecords {
+        padding-left: 15px;
+      }
+
+      .placeholder {
+        position: absolute;
+        color: $medium-gray;
+        grid-area: 1 / 1 / 2 / 3;
+        box-sizing: border-box;
+      }
+
+      &::-webkit-scrollbar {
+        width: 5px;
+      }
+
+      &::-webkit-scrollbar-track {
+        background: $lighter-gray;
+        border-radius: 10px;
+        margin: 10px 0;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background-clip: padding-box;
+        background: $text-gray;
+        border-radius: 100px;
+        background-clip: content-box;
+      }
+
+      .wrapper {
+        flex: 1 1 auto;
+        display: inline-grid;
+        grid-area: 1 / 1 / 2 / 3;
+        grid-template-columns: 0px min-content;
+        box-sizing: border-box;
+        font-weight: map-get($text-weights, book);
+        overflow: hidden;
+
+        &::after {
+          content: attr(data-value) " ";
+          visibility: hidden;
+          white-space: pre;
+          grid-area: 1 / 2 / auto / auto;
+          min-width: 2px;
+          font: inherit;
+          padding: 0;
+          border: none;
+          outline: none;
+        }
+
+        .input {
+          min-width: 2px;
+          width: 100%;
+          grid-area: 1 / 2 / auto / auto;
+          height: 30px;
+          background-color: transparent;
+          font: inherit;
+          padding: 0;
+          border: none;
+          outline: none;
+          resize: none;
+          color: $dark-gray;
+        }
+
+        &:disabled {
+          background-color: $lightest-gray;
+          color: $light-gray;
+
+          &::placeholder {
+            color: $light-gray;
+          }
+        }
+      }
+
+      .controls {
+        height: 30px;
+        align-items: center;
+        display: flex;
+        justify-content: flex-end;
+        flex: 1;
+
+        .showText {
+          margin-right: 10px;
+          line-height: 15px;
+          color: $dark-gray;
+          text-decoration-line: underline;
+          cursor: pointer;
+          white-space: nowrap;
+        }
+
+        .clearBtn {
+          color: $medium-gray;
+          cursor: pointer;
+          padding: 0;
+          outline: none;
+          background: transparent;
+          border: none;
+          height: 20px;
+          width: 20px;
+
+          .clearIcon {
+            height: 20px;
+            width: 20px;
+          }
+        }
+      }
+    }
+
+    &.active {
+      border-color: $navy-light;
+      @include set-box-shadow($navy-light);
+    }
+
+    &[data-invalid="true"] {
+      background-color: $gladiator-lightest;
+      border-color: $gladiator-light;
+
+      &:focus-within {
+        border-color: $gladiator-light;
+        @include set-box-shadow($gladiator-lighter);
+      }
+
+      .textarea {
+        background-color: $gladiator-lightest;
+      }
+    }
+
+    &[data-disabled="true"] {
+      background-color: $lightest-gray;
+      pointer-events: none;
+      border: 1px solid $light-gray;
+
+      .innerWrapper {
+        .placeholder {
+          color: $light-gray;
+        }
+      }
+    }
+  }
+
+  .menu {
+    position: absolute;
+    z-index: 10;
+    background-color: $white;
+    width: 100%;
+    margin-top: 10px;
+    display: flex;
+  }
+}

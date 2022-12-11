@@ -1,0 +1,68 @@
+$breakpoints: (
+  phone-only: 575px,
+  tablet-small: 576px,
+  tablet-medium: 768px,
+  tablet-large: 992px,
+  desktop: 1200px,
+) !default;
+
+$responsive-variants: (
+  "": "",
+  phone-only: "\\@phone-only",
+  tablet-small: "\\@tablet-small",
+  tablet-medium: "\\@tablet-medium",
+  tablet-large: "\\@tablet-large",
+  desktop: "\\@desktop",
+) !default;
+
+@mixin breakpoint($breakpoint) {
+  @if $breakpoint == "" {
+    @content;
+  } @else {
+    $value: map-get($breakpoints, $breakpoint);
+
+    @if $value != null {
+      @if $breakpoint == "phone-only" {
+        @media (max-width: $value) {
+          @content;
+        }
+      } @else {
+        @media (min-width: $value) {
+          @content;
+        }
+      }
+    } @else {
+      @warn "Unfortunately, no value could be retrieved from `#{$breakpoint}`. Please make sure it is defined in `$breakpoints` map.";
+    }
+  }
+}
+
+@mixin phone-only {
+  @include breakpoint(phone-only) {
+    @content;
+  }
+}
+
+@mixin tablet-small {
+  @include breakpoint(tablet-small) {
+    @content;
+  }
+}
+
+@mixin tablet-medium {
+  @include breakpoint(tablet-medium) {
+    @content;
+  }
+}
+
+@mixin tablet-large {
+  @include breakpoint(tablet-large) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @include breakpoint(desktop) {
+    @content;
+  }
+}

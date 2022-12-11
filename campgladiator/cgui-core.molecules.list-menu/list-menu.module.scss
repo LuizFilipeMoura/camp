@@ -1,0 +1,113 @@
+@import "./campgladiator/cgui-core.styles.variables.colors/colors.module.scss";
+
+.listMenu {
+  min-width: 200px;
+  display: inline-block;
+  border: 1px solid $light-gray;
+  box-shadow: 0px 0px 20px rgba($black, 0.1);
+  border-radius: 10px;
+
+  &[data-size="default"] {
+    .content {
+      .wrapper {
+        padding: 20px 0;
+
+        &::-webkit-scrollbar-track {
+          margin: 20px 0;
+        }
+
+        .header {
+          min-height: 40px;
+          margin: 0 20px;
+        }
+
+        .divider {
+          margin: 19.5px 0;
+        }
+      }
+    }
+  }
+
+  &[data-size="small"] {
+    .content {
+      .wrapper {
+        padding: 15px 0;
+
+        &::-webkit-scrollbar-track {
+          margin: 15px 0;
+        }
+
+        .header {
+          min-height: 30px;
+          margin: 0 20px;
+        }
+
+        .divider {
+          margin: 14.5px 0;
+        }
+      }
+    }
+  }
+
+  .content {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    overflow: hidden;
+    @-moz-document url-prefix() {
+      scrollbar-color: $text-gray $lighter-gray;
+    }
+
+    .wrapper {
+      width: 100%;
+      display: flex;
+      overflow-y: auto;
+      flex-direction: column;
+      gap: 10px;
+
+      &.scrollVisible {
+        margin-right: 10px;
+      }
+
+      &::-webkit-scrollbar {
+        width: 5px;
+      }
+
+      &::-webkit-scrollbar-track {
+        background: $lighter-gray;
+        border-radius: 10px;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background-clip: padding-box;
+        background: $text-gray;
+        border-radius: 100px;
+        background-clip: content-box;
+      }
+
+      .listItem,
+      .divider,
+      .header {
+        flex-shrink: 0;
+      }
+
+      .listItem {
+        margin: 0 10px 0 10px;
+
+        &.scrollVisible {
+          margin: 0 5px 0 10px;
+        }
+      }
+
+      .header {
+        align-items: center;
+        display: flex;
+
+        .label {
+          color: $medium-gray;
+          white-space: nowrap;
+        }
+      }
+    }
+  }
+}

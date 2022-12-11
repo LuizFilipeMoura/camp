@@ -1,0 +1,218 @@
+@import "./campgladiator/cgui-core.styles.breakpoints/breakpoints.module.scss";
+@import "./campgladiator/cgui-core.styles.variables.colors/colors.module.scss";
+@import "./campgladiator/cgui-core.styles.mixins/mixins.module.scss";
+
+@mixin animation {
+  @include transition-default(all);
+}
+
+@mixin arrowIconClass {
+  .arrowIcon {
+    align-items: center;
+    display: flex;
+    color: $medium-gray;
+    justify-content: center;
+    height: 24px;
+    width: 24px;
+    @include animation;
+  }
+}
+
+@mixin arrowIconEffect {
+  .arrowIcon {
+    transform: rotate(180deg);
+  }
+}
+
+@mixin itemListHeader {
+  .itemListHeader {
+    background-color: $white;
+    opacity: 0;
+    position: absolute;
+    right: 0;
+    top: 45px;
+    z-index: -1;
+    @include animation;
+    & > div {
+      max-height: 70vh;
+      & > div > div {
+        @include animation;
+      }
+    }
+  }
+  &:hover {
+    .itemListHeader {
+      opacity: 1;
+      z-index: 1;
+    }
+  }
+}
+
+@mixin flexCenter {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+@mixin userButtonContainer {
+  .userButtonContainer {
+    .userButton {
+      align-items: center;
+      cursor: pointer;
+      border-radius: 20px;
+      display: flex;
+      height: 40px;
+      justify-content: space-around;
+      padding: 0 10px;
+      position: relative;
+      @include animation;
+      @include arrowIconClass;
+      @include itemListHeader;
+      &:hover {
+        background: $lighter-gray;
+        @include arrowIconEffect;
+      }
+    }
+  }
+}
+
+@mixin headerLinksContainer {
+  .headerLinksContainer {
+    display: flex;
+    flex-direction: column;
+    text-transform: capitalize;
+    height: 100%;
+
+    .list {
+      height: 100%;
+      list-style: none;
+      gap: 10px;
+      margin: 0;
+      padding-left: 0px;
+      @include flexCenter;
+
+      .item {
+        border-radius: 100px;
+        cursor: pointer;
+        height: 40px;
+        padding: 0 20px;
+        position: relative;
+        @include flexCenter;
+        @include animation;
+        @include arrowIconClass;
+        @include itemListHeader;
+        &.active,
+        &:hover {
+          background: $lighter-gray;
+          @include arrowIconEffect;
+        }
+        .link {
+          color: $medium-gray;
+          text-align: center;
+          text-decoration: none;
+          @include flexCenter;
+        }
+
+        .itemListHeader {
+          left: 0px;
+          right: auto;
+        }
+        .itemActive {
+          position: absolute;
+          bottom: -20px;
+          height: 3px;
+          background: $pavement;
+          width: 100%;
+        }
+      }
+    }
+  }
+}
+
+@mixin accessoryItemContainer {
+  .accessoryItemContainer {
+    border-radius: 100px;
+    color: $medium-gray;
+    cursor: pointer;
+    height: 40px;
+    text-align: center;
+    padding: 0 20px;
+    position: relative;
+
+    @include flexCenter;
+    @include animation;
+    @include itemListHeader;
+
+    &:hover {
+      background-color: $lighter-gray;
+    }
+    .link {
+      color: $medium-gray;
+      text-decoration: auto;
+    }
+  }
+}
+
+@mixin collapsedMenuItemsContainer {
+  .collapsedMenuItemsContainer {
+    align-items: center;
+    display: flex;
+    gap: 10px;
+    position: relative;
+    .sandwichButton button {
+      background-color: transparent;
+      border: 0px;
+      color: $medium-gray;
+      cursor: pointer;
+      height: 40px;
+      width: 40px;
+      @include animation;
+      &:hover {
+        align-items: center;
+        background-color: $lighter-gray;
+        border-radius: 100px;
+        display: flex;
+        height: 40px;
+        justify-content: center;
+        width: 40px;
+      }
+    }
+    .sandwichButton {
+      position: relative;
+      @include itemListHeader;
+    }
+
+  }
+}
+
+.header {
+  align-items: center;
+  background-color: $white;
+  border-bottom: 1px solid $light-gray;
+  display: flex;
+  height: var(--header-height, 60px);
+  padding: 0 15px;
+
+  .nav {
+    align-items: center;
+    display: flex;
+    flex: 1;
+    gap: 10px;
+    justify-content: flex-end;
+    height: 100%;
+
+    @include userButtonContainer;
+    @include headerLinksContainer;
+    @include accessoryItemContainer;
+    @include collapsedMenuItemsContainer;
+  }
+
+  @include tablet-small {
+    height: var(--header-height, 60px);
+    padding: 0 15px;
+  }
+  @include tablet-large {
+    height: var(--header-height, 80px);
+    padding: 0 30px;
+  }
+}

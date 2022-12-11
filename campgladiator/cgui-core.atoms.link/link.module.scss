@@ -1,0 +1,51 @@
+@import "./campgladiator/cgui-core.styles.variables.colors/colors.module.scss";
+@import "./campgladiator/cgui-core.styles.mixins/mixins.module.scss";
+
+.link {
+  padding: 10px 15px;
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  border-radius: 50px;
+  cursor: pointer;
+  color: $dark-gray;
+  text-decoration: none;
+  transform: translate(-10px, 0);
+  @include transition-default(background-color);
+
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+  }
+
+  .text {
+    text-decoration: underline;
+  }
+
+  .icon {
+    padding-left: 3px;
+
+    &[data-size="tiny"] {
+      font-size: 11px;
+    }
+
+    &[data-size="xsmall"] {
+      font-size: 14px;
+    }
+
+    &[data-size="small"] {
+      font-size: 15px;
+    }
+
+    &[data-size="default"] {
+      font-size: 18px;
+    }
+
+    &[data-size="large"] {
+      font-size: 19px;
+    }
+
+    &[data-size="xlarge"] {
+      font-size: 26px;
+    }
+  }
+}

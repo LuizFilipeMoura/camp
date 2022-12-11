@@ -1,0 +1,50 @@
+@import "./campgladiator/cgui-core.styles.variables.colors/colors.module.scss";
+
+@mixin set-colors($background-color, $color) {
+  background-color: $background-color;
+  color: $color;
+}
+
+.tag {
+  white-space: nowrap;
+  &[data-size="default"] {
+    border-radius: 10px;
+    padding: 11px 10px;
+  }
+  &[data-size="small"] {
+    border-radius: 10px;
+    padding: 7px 10px;
+  }
+  &[data-size="xsmall"] {
+    border-radius: 10px;
+    padding: 5.5px 7px;
+  }
+  &[data-size="tiny"] {
+    border-radius: 7px;
+    padding: 3px 7px;
+  }
+  &[data-emphasis="default"] {
+    &[data-variation="default"] {
+      @include set-colors($text-gray, $white);
+    }
+    &[data-variation="alternative"] {
+      @include set-colors($lighter-gray, $medium-gray);
+    }
+  }
+  &[data-emphasis="primary"] {
+    &[data-variation="default"] {
+      @include set-colors($gladiator, $white);
+    }
+    &[data-variation="alternative"] {
+      @include set-colors($gladiator-lightest, $gladiator);
+    }
+  }
+  &[data-emphasis="secondary"] {
+    &[data-variation="default"] {
+      @include set-colors($dark-gray, $white);
+    }
+    &[data-variation="alternative"] {
+      @include set-colors($lightest-gray, $dark-gray);
+    }
+  }
+}

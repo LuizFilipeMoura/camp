@@ -1,0 +1,84 @@
+@import "./campgladiator/cgui-core.styles.mixins/mixins.module.scss";
+
+$logo-cdn-path: "https://s3.amazonaws.com/cgcdn/global-ui/images/logos/campgladiator/";
+
+@mixin add-logo-background-image($name) {
+  @include add-background-image($logo-cdn-path, $name);
+}
+
+.logo {
+  max-width: 100%;
+
+  &[data-type="full"] {
+    min-width: 120px;
+  }
+
+  &[data-type="icon"] {
+    min-width: 20px;
+  }
+}
+
+.img {
+  width: 100%;
+  height: 0;
+  display: block;
+  outline: 0;
+  border: 0 none;
+  text-indent: -9999px;
+  font-size: 0;
+  background-repeat: no-repeat;
+  background-position: 0;
+  background-size: 100%;
+
+  &[data-type="full"] {
+    padding-bottom: 20.5%;
+
+    &[data-full-type="red-dark-gray"] {
+      @include add-logo-background-image("full-color-black.svg");
+    }
+
+    &[data-full-type="red-white"] {
+      @include add-logo-background-image("full-color-white.svg");
+    }
+
+    &[data-full-type="dark-gray-white"] {
+      @include add-logo-background-image("full-black-white.svg");
+    }
+
+    &[data-full-type="white"] {
+      @include add-logo-background-image("full-white.svg");
+    }
+
+    &[data-full-type="dark-gray"] {
+      @include add-logo-background-image("full-black.svg");
+    }
+  }
+
+  &[data-type="icon"] {
+    padding-bottom: 100%;
+
+    &[data-icon-type="red"] {
+      @include add-logo-background-image("icon-default.svg");
+    }
+
+    &[data-icon-type="dark-gray"] {
+      @include add-logo-background-image("icon-black.svg");
+    }
+
+    &[data-icon-type="white"] {
+      @include add-logo-background-image("icon-white.svg");
+    }
+
+    &[data-icon-type="light-gray"] {
+      @include add-logo-background-image("icon-light.svg");
+    }
+
+    &[data-icon-type="navy"] {
+      @include add-logo-background-image("icon-navy.svg");
+    }
+
+    &[data-icon-type="gray"] {
+      @include add-logo-background-image("icon-gray.svg");
+    }
+  }
+}

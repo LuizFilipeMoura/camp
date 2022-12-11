@@ -1,0 +1,467 @@
+@import "./campgladiator/cgui-core.styles.variables.colors/colors.module.scss";
+@import "./campgladiator/cgui-core.styles.fonts.gotham/gotham.module.scss";
+@import "./campgladiator/cgui-core.styles.variables.typography/typography.module.scss";
+
+@mixin set-data-size-ruleset(
+  $font-size,
+  $line-height,
+  $letter-spacing,
+  $padding-right-left,
+  $height
+) {
+  font-size: $font-size;
+  line-height: $line-height;
+  letter-spacing: $letter-spacing;
+  padding: 0 $padding-right-left;
+  height: $height;
+}
+
+@mixin set-icon-margin($margin-right) {
+  &[data-icon="true"] {
+    &[data-children="true"] {
+      .icon {
+        margin-right: $margin-right;
+      }
+    }
+  }
+}
+
+@mixin set-icon-width($size) {
+  &[data-icon="true"] {
+    &[data-children="false"] {
+      min-width: $size;
+      min-height: $size;
+      width: $size;
+      height: $size;
+      padding: 0;
+    }
+  }
+}
+
+@mixin set-data-variation-solid-ruleset(
+  $base-color,
+  $primary-color,
+  $secondary-color,
+  $tertiary-color
+) {
+  background: $primary-color;
+  --base-color: #{$base-color};
+
+  &:hover {
+    background: $secondary-color;
+  }
+
+  &:active {
+    background: $tertiary-color;
+  }
+
+  &:not(:active) {
+    &:disabled {
+      background: $light-gray;
+      &:focus,
+      &:hover {
+        box-shadow: none;
+      }
+    }
+  }
+
+  &[data-floating="true"] {
+    box-shadow: 0px 2px 10px rgba($black, 0.1);
+  }
+}
+
+@mixin set-data-variation-outline-ruleset(
+  $base-color,
+  $primary-color,
+  $secondary-color,
+  $tertiary-color,
+  $quaternary-color
+) {
+  border: 1px solid $base-color;
+  --base-color: #{$base-color};
+  background: $primary-color;
+
+  &:hover {
+    border-color: $secondary-color;
+  }
+
+  &:active {
+    border-color: $quaternary-color;
+    background: $tertiary-color;
+    --base-color: #{$quaternary-color};
+  }
+
+  &:not(:active) {
+    &:disabled {
+      border-color: $light-gray;
+      --base-color: #{$light-gray};
+      &:focus,
+      &:hover {
+        box-shadow: none;
+      }
+    }
+  }
+
+  &[data-floating="true"] {
+    box-shadow: 0px 2px 10px rgba($black, 0.1);
+    background: $white;
+    &:focus {
+      box-shadow: none;
+    }
+    &:disabled {
+      background: $white;
+    }
+  }
+}
+
+@mixin set-data-variation-text-ruleset(
+  $base-color,
+  $primary-color,
+  $secondary-color,
+  $tertiary-color,
+  $quaternary-color,
+  $quinary-color
+) {
+  --base-color: #{$base-color};
+  background: $primary-color;
+  border: 3px solid transparent;
+
+  &:hover {
+    --base-color: #{$secondary-color};
+  }
+
+  &:focus {
+    border-color: rgba($quaternary-color, 0.2);
+  }
+
+  &:active {
+    --base-color: #{$tertiary-color};
+  }
+
+  &:not(:active) {
+    &:disabled {
+      --base-color: #{$light-gray};
+      &:focus,
+      &:hover {
+        box-shadow: none;
+        border-color: transparent;
+      }
+    }
+  }
+
+  &[data-floating="true"] {
+    background: $white;
+    box-shadow: 0px 2px 10px rgba($black, 0.1);
+
+    &:focus {
+      box-shadow: 0px 2px 10px rgba($black, 0.1);
+    }
+
+    &:active {
+      background: $quinary-color;
+    }
+  }
+}
+
+@mixin set-inverse-ruleset($inverse-color, $base-color, $primary-color) {
+  &:hover {
+    --base-color: #{$inverse-color};
+    background: $white;
+  }
+  &:focus {
+    box-shadow: 0px 0px 0px 3px rgba($dark-gray, 0.2);
+  }
+  &:active {
+    --base-color: #{$base-color};
+    background: $primary-color;
+  }
+  &:not(:active) {
+    &:disabled {
+      background: $white;
+      --base-color: #{$light-gray};
+    }
+  }
+}
+
+%button-shared {
+  --base-color: #{$white};
+  cursor: pointer;
+  font-family: gotham;
+  border-radius: 30px;
+  border: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--base-color);
+  text-decoration: none;
+  text-transform: uppercase;
+  white-space: nowrap;
+  transition: 0.15s linear all;
+}
+
+.button {
+  @extend %button-shared;
+
+  .content {
+    opacity: 1;
+    transition: 0.3s;
+    display: inline-block;
+    color: var(--base-color);
+    padding: 0;
+    margin: 0;
+  }
+
+  .icon {
+    vertical-align: middle;
+    color: var(--base-color);
+    @each $name, $size in $label-line-heights {
+      &[data-size="#{$name}"] {
+        font-size: #{$size};
+      }
+    }
+  }
+
+  &[data-size="xsmall"] {
+    @include set-data-size-ruleset(9px, 14px, 1px, 15px, 25px);
+    @include set-icon-width(30px);
+    @include set-icon-margin(5px);
+  }
+
+  &[data-size="small"] {
+    @include set-data-size-ruleset(10px, 14px, 1.5px, 20px, 30px);
+    @include set-icon-width(30px);
+    @include set-icon-margin(5px);
+  }
+
+  &[data-size="default"] {
+    @include set-data-size-ruleset(12px, 16px, 1.5px, 25px, 40px);
+    @include set-icon-width(40px);
+    @include set-icon-margin(10px);
+  }
+
+  &[data-size="large"] {
+    @include set-data-size-ruleset(14px, 18px, 1.5px, 30px, 48px);
+    @include set-icon-width(48px);
+    @include set-icon-margin(10px);
+  }
+
+  &[data-size="xlarge"] {
+    @include set-data-size-ruleset(16px, 24px, 1.5px, 35px, 60px);
+    @include set-icon-width(60px);
+    @include set-icon-margin(10px);
+  }
+
+  &[data-variation="solid"] {
+    &[data-emphasis="primary"] {
+      @include set-data-variation-solid-ruleset(
+        $white,
+        $gladiator,
+        $gladiator-medium,
+        $gladiator-light
+      );
+
+      &:focus {
+        box-shadow: 0px 0px 0px 3px rgba($gladiator, 0.2);
+      }
+    }
+
+    &[data-emphasis="primary-inverse"] {
+      @include set-data-variation-solid-ruleset(
+        $gladiator,
+        $white,
+        $gladiator-medium,
+        $gladiator-light
+      );
+      @include set-inverse-ruleset(
+        $gladiator-medium,
+        $gladiator-light,
+        $gladiator-lightest
+      );
+
+      &:focus {
+        box-shadow: 0px 0px 0px 3px rgba($gladiator, 0.2);
+      }
+    }
+
+    &[data-emphasis="secondary"] {
+      @include set-data-variation-solid-ruleset(
+        $white,
+        $dark-gray,
+        $pavement,
+        $gladiator-dark
+      );
+
+      &:focus {
+        box-shadow: 0px 0px 0px 3px rgba($dark-gray, 0.2);
+      }
+    }
+
+    &[data-emphasis="secondary-inverse"] {
+      @include set-data-variation-solid-ruleset(
+        $dark-gray,
+        $white,
+        $pavement,
+        $gladiator-dark
+      );
+      @include set-inverse-ruleset(
+        $pavement,
+        $gladiator-light,
+        $gladiator-lightest
+      );
+
+      &:focus {
+        box-shadow: 0px 0px 0px 3px rgba($dark-gray, 0.2);
+      }
+    }
+  }
+
+  &[data-variation="outline"] {
+    &[data-emphasis="primary"] {
+      @include set-data-variation-outline-ruleset(
+        $gladiator,
+        transparent,
+        $gladiator-medium,
+        $gladiator-lightest,
+        $gladiator-light
+      );
+
+      &:focus {
+        box-shadow: 0px 0px 0px 3px rgba($gladiator, 0.2);
+      }
+    }
+
+    &[data-emphasis="secondary"] {
+      @include set-data-variation-outline-ruleset(
+        $dark-gray,
+        transparent,
+        $pavement,
+        $gladiator-lightest,
+        $gladiator-light
+      );
+
+      &:focus {
+        box-shadow: 0px 0px 0px 3px rgba($dark-gray, 0.2);
+      }
+    }
+
+    &[data-emphasis="secondary-alt"] {
+      @include set-data-variation-outline-ruleset(
+        $dark-gray,
+        transparent,
+        $medium-gray,
+        $gladiator-lightest,
+        $gladiator-light
+      );
+      border: 1px solid $text-gray;
+
+      &:hover {
+        --base-color: #{$pavement};
+      }
+
+      &:focus {
+        box-shadow: 0px 0px 0px 3px rgba($text-gray, 0.2);
+      }
+    }
+
+    &[data-emphasis="negative"] {
+      @include set-data-variation-outline-ruleset(
+        $white,
+        transparent,
+        $lightest-gray,
+        $gladiator-lightest,
+        $gladiator-light
+      );
+
+      &:focus {
+        box-shadow: 0px 0px 0px 3px rgba($white, 0.2);
+      }
+
+      &[data-floating="true"] {
+        background: rgba($dark-gray, 0.5);
+
+        &:hover {
+          background: rgba($pavement, 0.65);
+        }
+
+        &:focus {
+          box-shadow: 0px 2px 10px rgba($black, 0.1);
+        }
+
+        &:disabled {
+          background: $white;
+          --base-color: #{rgba($white, 0.5)};
+        }
+      }
+    }
+  }
+
+  &[data-variation="text"] {
+    border: none;
+    box-shadow: 0px 0px 0px 2px transparent;
+
+    &[data-emphasis="primary"] {
+      @include set-data-variation-text-ruleset(
+        $gladiator,
+        transparent,
+        $gladiator-medium,
+        $gladiator-light,
+        $gladiator,
+        $gladiator-lightest
+      );
+    }
+
+    &[data-emphasis="secondary"] {
+      @include set-data-variation-text-ruleset(
+        $dark-gray,
+        transparent,
+        $pavement,
+        $gladiator-light,
+        $gladiator,
+        $gladiator-lightest
+      );
+
+      &:focus {
+        border: 3px solid rgba($dark-gray, 0.2);
+      }
+    }
+
+    &[data-emphasis="negative"] {
+      @include set-data-variation-text-ruleset(
+        $white,
+        transparent,
+        $lightest-gray,
+        $gladiator-light,
+        $gladiator,
+        $gladiator-lightest
+      );
+
+      &[data-floating="true"] {
+        background: rgba($dark-gray, 0.5);
+
+        &:hover {
+          background: rgba($pavement, 0.65);
+        }
+
+        &:active {
+          background: $gladiator-lightest;
+
+          &:disbaled {
+            color: rgba($gladiator, 0.5);
+          }
+        }
+
+        &:disabled {
+          --base-color: #{rgba($white, 0.5)};
+        }
+      }
+    }
+  }
+
+  &:disabled {
+    cursor: default;
+    pointer-events: none;
+    &:active {
+      opacity: 0.5;
+    }
+  }
+}

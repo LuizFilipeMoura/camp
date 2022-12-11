@@ -1,0 +1,50 @@
+@import "./campgladiator/cgui-core.styles.fonts.cgicons/cgicons.module.scss";
+@import "./campgladiator/cgui-core.styles.fonts.cgicons/cgicons-line-unicode-map.module.scss";
+@import "./campgladiator/cgui-core.styles.fonts.cgicons/cgicons-solid-unicode-map.module.scss";
+
+$cgIconsLine: cgIconsLine !important;
+$cgIconsSolid: cgIconsSolid !important;
+$cgIconsLineMap: icon-line-unicode-map;
+$cgIconsSolidMap: icon-solid-unicode-map;
+
+$defaultIconSize: 24px;
+
+%icon-shared {
+  display: inline-block;
+  speak: never;
+  font-size: $defaultIconSize;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.lineIcon {
+  @extend %icon-shared;
+  font-family: $cgIconsLine;
+
+  @each $name, $unicode in $icon-line-unicode-map {
+    &[data-icon="#{$name}"]:before {
+      content: "#{$unicode}";
+    }
+  }
+}
+
+.solidIcon {
+  @extend %icon-shared;
+  font-family: $cgIconsSolid;
+
+  @each $name, $unicode in $icon-solid-unicode-map {
+    &[data-icon="#{$name}"]:before {
+      content: "#{$unicode}";
+    }
+  }
+}
+
+.monochromeIcon {
+  width: 24px;
+  height: 24px;
+}

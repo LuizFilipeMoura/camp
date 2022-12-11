@@ -1,0 +1,10 @@
+$cdnUrl: 'https://cgcdn.s3.amazonaws.com/global-ui/fonts/';
+
+@font-face {
+  font-family: 'United';
+  src: url($cdnUrl + 'uniteditaliccondheavy.otf');
+}
+
+.fontUnited {
+  font-family: 'United', sans-serif;
+}

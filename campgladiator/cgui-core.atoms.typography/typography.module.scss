@@ -1,0 +1,188 @@
+@import "./campgladiator/cgui-core.styles.fonts.gotham/gotham.module.scss";
+@import "./campgladiator/cgui-core.styles.fonts.united/united.module.scss";
+@import "./campgladiator/cgui-core.styles.breakpoints/breakpoints.module.scss";
+@import "./campgladiator/cgui-core.styles.variables.typography/typography.module.scss";
+
+.paragraph,
+.heading,
+.label {
+  -webkit-font-smoothing: antialiased;
+}
+
+.paragraph {
+  font-family: map-get($fonts, gotham);
+  font-style: normal;
+  margin: 0;
+
+  @each $name, $size in $text-sizes {
+    &[data-size="#{$name}"] {
+      font-size: #{$size};
+      line-height: map-get($text-line-heights, #{$name});
+
+      &[data-weight="book"] {
+        font-weight: map-get($text-weights, book);
+        letter-spacing: map-get($text-letter-spacings--book, #{$name});
+      }
+
+      &[data-weight="normal"] {
+        font-weight: map-get($text-weights, normal);
+        letter-spacing: map-get($text-letter-spacings--normal, #{$name});
+      }
+
+      &[data-weight="bold"] {
+        font-weight: map-get($text-weights, bold);
+        letter-spacing: map-get($text-letter-spacings--bold, #{$name});
+      }
+    }
+  }
+}
+
+$headings: (h1, h2, h3, h4, h5, h6);
+
+.heading {
+  font-weight: map-get($text-weights, bold);
+  font-style: normal;
+  margin: 0;
+
+  @each $heading in $headings {
+    &[data-variation="default"] {
+      &[data-font="gotham"] {
+        font-family: map-get($fonts, gotham);
+
+        &:is(#{$heading}) {
+          font-size: map-get($heading-default-sizes--mobile, #{$heading});
+          letter-spacing: map-get(
+            $heading-default-letter-spacings--mobile,
+            #{$heading}
+          );
+          line-height: map-get(
+            $heading-default-line-heights--mobile,
+            #{$heading}
+          );
+
+          @include tablet-small {
+            font-size: map-get($heading-default-sizes--tablet, #{$heading});
+            letter-spacing: map-get(
+              $heading-default-letter-spacings--tablet,
+              #{$heading}
+            );
+            line-height: map-get(
+              $heading-default-line-heights--tablet,
+              #{$heading}
+            );
+          }
+
+          @include desktop {
+            font-size: map-get($heading-default-sizes--desktop, #{$heading});
+            letter-spacing: map-get(
+              $heading-default-letter-spacings--desktop,
+              #{$heading}
+            );
+            line-height: map-get(
+              $heading-default-line-heights--desktop,
+              #{$heading}
+            );
+          }
+        }
+      }
+    }
+
+    &[data-variation="display"] {
+      text-transform: uppercase;
+
+      &[data-font="gotham"] {
+        font-family: map-get($fonts, gotham);
+
+        &:is(#{$heading}) {
+          font-size: map-get($display-gotham-sizes--mobile, #{$heading});
+          letter-spacing: map-get(
+            $display-gotham-letter-spacings--mobile,
+            #{$heading}
+          );
+          line-height: map-get(
+            $display-gotham-line-heights--mobile,
+            #{$heading}
+          );
+
+          @include tablet-small {
+            font-size: map-get($display-gotham-sizes--tablet, #{$heading});
+            letter-spacing: map-get(
+              $display-gotham-letter-spacings--tablet,
+              #{$heading}
+            );
+            line-height: map-get(
+              $display-gotham-line-heights--tablet,
+              #{$heading}
+            );
+          }
+
+          @include desktop {
+            font-size: map-get($display-gotham-sizes--desktop, #{$heading});
+            letter-spacing: map-get(
+              $display-gotham-letter-spacings--desktop,
+              #{$heading}
+            );
+            line-height: map-get(
+              $display-gotham-line-heights--desktop,
+              #{$heading}
+            );
+          }
+        }
+      }
+
+      &[data-font="united"] {
+        font-family: map-get($fonts, united);
+
+        &:is(#{$heading}) {
+          font-size: map-get($display-united-sizes--mobile, #{$heading});
+          letter-spacing: map-get(
+            $display-united-letter-spacings--mobile,
+            #{$heading}
+          );
+          line-height: map-get(
+            $display-united-line-heights--mobile,
+            #{$heading}
+          );
+
+          @include tablet-small {
+            font-size: map-get($display-united-sizes--tablet, #{$heading});
+            letter-spacing: map-get(
+              $display-united-letter-spacings--tablet,
+              #{$heading}
+            );
+            line-height: map-get(
+              $display-united-line-heights--tablet,
+              #{$heading}
+            );
+          }
+
+          @include desktop {
+            font-size: map-get($display-united-sizes--desktop, #{$heading});
+            letter-spacing: map-get(
+              $display-united-letter-spacings--desktop,
+              #{$heading}
+            );
+            line-height: map-get(
+              $display-united-line-heights--desktop,
+              #{$heading}
+            );
+          }
+        }
+      }
+    }
+  }
+}
+
+.label {
+  font-family: map-get($fonts, gotham);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+
+  @each $name, $size in $label-sizes {
+    &[data-size="#{$name}"] {
+      font-size: #{$size};
+      line-height: map-get($label-line-heights, #{$name});
+      letter-spacing: map-get($label-letter-spacings, #{$name});
+    }
+  }
+}

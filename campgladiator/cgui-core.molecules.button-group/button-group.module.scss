@@ -1,0 +1,177 @@
+@import "./campgladiator/cgui-core.styles.variables.colors/colors.module.scss";
+@import "./campgladiator/cgui-core.styles.fonts.gotham/gotham.module.scss";
+@import "./campgladiator/cgui-core.styles.variables.typography/typography.module.scss";
+
+@mixin set-data-size-ruleset(
+  $font-size,
+  $line-height,
+  $letter-spacing,
+  $padding-right-left,
+  $height
+) {
+  font-size: $font-size;
+  line-height: $line-height;
+  letter-spacing: $letter-spacing;
+  padding: 0 $padding-right-left;
+  height: $height;
+}
+
+@mixin set-icon-margin($margin-right) {
+  &[data-icon="true"] {
+    &[data-children="true"] {
+      .icon {
+        margin-right: $margin-right;
+      }
+    }
+  }
+}
+
+@mixin set-icon-width($size) {
+  &[data-icon="true"] {
+    &[data-children="false"] {
+      min-width: $size;
+      min-height: $size;
+      width: $size;
+      height: $size;
+      padding: 0;
+    }
+  }
+}
+
+.cgButtonGroup {
+  display: flex;
+
+  .cgButton {
+    cursor: pointer;
+    font-family: gotham;
+    border-radius: 30px;
+    border: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    white-space: nowrap;
+    transition: 0.15s linear all;
+    border: 1px solid $text-gray;
+    background: $white;
+
+    &:focus {
+      box-shadow: 0px 0px 0px 3px rgba($text-gray, 0.2);
+    }
+
+    &:hover {
+      background: $lighter-gray;
+
+      .content {
+        color: $pavement;
+      }
+
+      .icon {
+        color: $dark-gray;
+      }
+    }
+
+    &:disabled {
+      background: $white;
+      border: 1px solid $light-gray;
+      z-index: -1;
+      cursor: initial;
+      pointer-events: none;
+
+      .content {
+        color: $light-gray;
+      }
+
+      .icon {
+        color: $light-gray;
+      }
+    }
+
+    &:not(:last-child) {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+
+    &:not(:first-child) {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+      margin-left: -2px;
+    }
+
+    .content {
+      opacity: 1;
+      transition: 0.3s;
+      display: inline-block;
+      color: $dark-gray;
+      padding: 0;
+      margin: 0;
+    }
+
+    .icon {
+      vertical-align: middle;
+      color: $medium-gray;
+
+      @each $name, $size in $label-line-heights {
+        &[data-size="#{$name}"] {
+          font-size: #{$size};
+        }
+      }
+    }
+
+    &[data-size="xsmall"] {
+      @include set-data-size-ruleset(10px, 10px, 1px, 15px, 25px);
+      @include set-icon-width(14px);
+      @include set-icon-margin(5px);
+    }
+
+    &[data-size="small"] {
+      @include set-data-size-ruleset(10px, 10px, 1.5px, 20px, 30px);
+      @include set-icon-width(16px);
+      @include set-icon-margin(5px);
+    }
+
+    &[data-size="default"] {
+      @include set-data-size-ruleset(12px, 12px, 1.5px, 25px, 40px);
+      @include set-icon-width(18px);
+      @include set-icon-margin(10px);
+    }
+
+    &[data-size="large"] {
+      @include set-data-size-ruleset(14px, 14px, 1.5px, 30px, 48px);
+      @include set-icon-width(20px);
+      @include set-icon-margin(10px);
+    }
+  }
+
+  .cgButtonActive {
+    background: $gladiator-lightest;
+    border: 1px solid $gladiator;
+    z-index: 1;
+
+    &:focus {
+      box-shadow: 0px 0px 0px 3px rgba($gladiator, 0.2);
+    }
+
+    &:hover {
+      background: $gladiator-lightest;
+      z-index: 1;
+
+      .content {
+        color: $gladiator;
+      }
+
+      .icon {
+        color: $gladiator;
+      }
+    }
+
+    .content {
+      color: $gladiator;
+    }
+
+    .icon {
+      color: $gladiator;
+    }
+  }
+}

@@ -1,0 +1,93 @@
+@import "~@campgladiator/cgui-core.styles.breakpoints/breakpoints.module.scss";
+
+$grid-gutter-side: 30px / 2;
+$total-columns: 12;
+
+@mixin make-col($size) {
+  $columnSize: percentage($size / $total-columns);
+  flex: 0 0 $columnSize;
+  width: $columnSize;
+  padding-right: $grid-gutter-side;
+  padding-left: $grid-gutter-side;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.container {
+  box-sizing: border-box;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: none;
+  padding-left: 15px;
+  padding-right: 15px;
+
+  @include tablet-small {
+    max-width: 540px;
+  }
+
+  @include tablet-medium {
+    max-width: 720px;
+  }
+
+  @include tablet-large {
+    max-width: 960px;
+  }
+
+  @include desktop {
+    max-width: 1140px;
+  }
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -$grid-gutter-side;
+  margin-left: -$grid-gutter-side;
+  box-sizing: border-box;
+
+  .col {
+    flex-basis: 0;
+    flex-grow: 1;
+    max-width: 100%;
+    padding-right: $grid-gutter-side;
+    padding-left: $grid-gutter-side;
+  }
+
+  @for $i from 1 through $total-columns {
+    .col#{$i} {
+      @include make-col($i);
+    }
+  }
+
+  @include tablet-small {
+    @for $i from 1 through $total-columns {
+      .colSm#{$i} {
+        @include make-col($i);
+      }
+    }
+  }
+
+  @include tablet-medium {
+    @for $i from 1 through $total-columns {
+      .colMd#{$i} {
+        @include make-col($i);
+      }
+    }
+  }
+
+  @include tablet-large {
+    @for $i from 1 through $total-columns {
+      .colLg#{$i} {
+        @include make-col($i);
+      }
+    }
+  }
+
+  @include desktop {
+    @for $i from 1 through $total-columns {
+      .colXl#{$i} {
+        @include make-col($i);
+      }
+    }
+  }
+}

@@ -4,6 +4,7 @@ import { GenerateSandwichMenuArgs, HeaderLinksProps } from "./header";
 export type ListItem = ItemProps | HeaderProps | DividerProps;
 
 export const generateSandwichMenu = (
+  // @ts-ignore
   { isLoggedIn, loginUrl = null, headerLinks }: GenerateSandwichMenuArgs,
 ): ListItem[] => {
   const unFlattenedMenuItems = headerLinks.map((item: HeaderLinksProps) => {
@@ -19,7 +20,7 @@ export const generateSandwichMenu = (
   })
 
   let menuItems = removeUnneededDividers(flatten(unFlattenedMenuItems));
-  
+
   if (isLoggedIn) return menuItems;
 
   const loginItem: ListItem = {
@@ -44,7 +45,7 @@ const addLoginToMenuItems = (
   return menuItems.concat([{ type: "divider" }, loginItem]);
 };
 
-export const mapHeaderItemToListMenuItem = ({ 
+export const mapHeaderItemToListMenuItem = ({
   label,
   link,
   isActiveRoute = false,
@@ -66,10 +67,10 @@ const removeUnneededDividers = (list: ListItem[]) => {
     if (item.type === 'divider') {
       if (index === 0)
         indexesToRemove.push(0);
-    
+
       if (lastItemType === 'divider')
         indexesToRemove.push(index);
-    
+
       if (index === list.length - 1)
         indexesToRemove.push(index);
     }

@@ -14,6 +14,7 @@ export type TagProps = {
 } & React.HTMLAttributes<HTMLDivElement>;
 
 const tagSizeToParagraphSize: {
+  // @ts-ignore
   [key in TagProps["size"]]: ParagraphProps["size"];
 } = {
   tiny: "tiny",

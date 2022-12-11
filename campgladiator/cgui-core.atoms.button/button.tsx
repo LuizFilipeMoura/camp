@@ -66,6 +66,7 @@ export type ActionButtonProps = ButtonProps &
 export type LinkButtonProps = ButtonProps &
   React.AnchorHTMLAttributes<HTMLAnchorElement>;
 
+// @ts-ignore
 const ButtonContent = ({ icon, size, styles, children }) => (
   <>
     {icon?.type === "solid" && (

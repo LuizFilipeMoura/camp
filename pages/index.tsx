@@ -21,10 +21,10 @@ interface HomeProps {
 }
 
 export async function getServerSideProps() {
-  const workoutRes = await fetch('http://localhost:3000/api/workouts', {
+  const workoutRes = await fetch(`${process.env.API_URL || 'http://localhost:3000/'}api/workouts`, {
     method: 'GET',
   });
-  const filtersRes = await fetch('http://localhost:3000/api/filters', {
+  const filtersRes = await fetch(`${process.env.API_URL|| 'http://localhost:3000/'}api/filters`, {
     method: 'GET',
   });
 

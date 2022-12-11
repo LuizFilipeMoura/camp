@@ -6,3 +6,8 @@ export const PageHeader = styled.div`
   align-items: center;
   justify-content: space-between;
 `;
+export const PageHeaderWithBackButton = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+`;

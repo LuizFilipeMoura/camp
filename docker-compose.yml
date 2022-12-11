@@ -5,10 +5,8 @@ services:
     restart: always
     container_name: camp
     ports:
-      - ${APP_PORT}:3000
+      - 4420:3000
     networks:
       - camp-network
 networks:
   camp-network:
-    external:
-      name: camp

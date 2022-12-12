@@ -5,7 +5,6 @@ import { Workout } from '../../../src/models/workout';
 import { WorkoutDetails } from '../../workout/[id]';
 
 export default function handler(req: NextApiRequest, res: NextApiResponse<WorkoutDetails>) {
-  console.log(req.query);
   const { id } = req.query;
   const workout = workouts.find((_workout) => _workout.id === id) as Workout;
   const sameLevels = workouts.filter((_workout) => _workout.levelTag === workout.levelTag);

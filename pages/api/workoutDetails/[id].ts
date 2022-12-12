@@ -10,6 +10,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse<Workou
   const sameLevels = workouts.filter((_workout) => _workout.levelTag === workout.levelTag);
   const sameImpacts = workouts.filter((_workout) => _workout.impactTag === workout.impactTag);
 
+
   res.status(200).json({
     workout,
     sameLevels,
